@@ -43,7 +43,7 @@ def generate_launch_description():
         package="robotiq_description"
     ).find("robotiq_description")
     default_model_path = os.path.join(
-        description_pkg_share, "urdf", "robotiq_2f_85_gripper.urdf.xacro"
+        description_pkg_share, "urdf", "robotiq_2f_140_gripper.urdf.xacro"
     )
     default_rviz_config_path = os.path.join(
         description_pkg_share, "rviz", "view_urdf.rviz"
@@ -66,7 +66,7 @@ def generate_launch_description():
     )
     args.append(
         launch.actions.DeclareLaunchArgument(
-            name="launch_rviz", default_value="false", description="Launch RViz?"
+            name="launch_rviz", default_value="true", description="Launch RViz?"
         )
     )
 
@@ -85,14 +85,6 @@ def generate_launch_description():
         )
     }
 
-    update_rate_config_file = PathJoinSubstitution(
-        [
-            description_pkg_share,
-            "config",
-            "robotiq_update_rate.yaml",
-        ]
-    )
-
     controllers_file = "robotiq_controllers.yaml"
     initial_joint_controllers = PathJoinSubstitution(
         [description_pkg_share, "config", controllers_file]
@@ -103,7 +95,6 @@ def generate_launch_description():
         executable="ros2_control_node",
         parameters=[
             robot_description_param,
-            update_rate_config_file,
             initial_joint_controllers,
         ],
     )

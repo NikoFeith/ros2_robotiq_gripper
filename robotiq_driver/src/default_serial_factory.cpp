@@ -37,7 +37,7 @@ namespace robotiq_driver
 const auto kLogger = rclcpp::get_logger("DefaultSerialFactory");
 
 constexpr auto kUsbPortParamName = "COM_port";
-constexpr auto kUsbPortParamDefault = "/dev/ttyUSB0";
+constexpr auto kUsbPortParamDefault = "/tmp/ttyUR";
 
 constexpr auto kBaudrateParamName = "baudrate";
 constexpr auto kBaudrateAddressParamDefault = 115200;
